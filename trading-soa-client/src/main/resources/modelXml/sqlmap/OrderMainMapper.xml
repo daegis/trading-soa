@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="OrderMainMapper">
+    <resultMap id="BaseResultMap" type="cn.aegisa.project.trading.model.OrderMain">
+        <id column="order_id" property="orderId" jdbcType="BIGINT"/>
+        <result column="order_no" property="orderNo" jdbcType="VARCHAR"/>
+        <result column="order_category" property="orderCategory" jdbcType="SMALLINT"/>
+        <result column="original_order_no" property="originalOrderNo" jdbcType="VARCHAR"/>
+        <result column="third_order_no" property="thirdOrderNo" jdbcType="VARCHAR"/>
+        <result column="third_trade_no" property="thirdTradeNo" jdbcType="VARCHAR"/>
+        <result column="order_type" property="orderType" jdbcType="VARCHAR"/>
+        <result column="order_source" property="orderSource" jdbcType="VARCHAR"/>
+        <result column="order_platform" property="orderPlatform" jdbcType="VARCHAR"/>
+        <result column="channel_code" property="channelCode" jdbcType="VARCHAR"/>
+        <result column="del_flag" property="delFlag" jdbcType="SMALLINT"/>
+        <result column="user_id" property="userId" jdbcType="BIGINT"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="order_status" property="orderStatus" jdbcType="INTEGER"/>
+        <result column="thrid_order_status" property="thridOrderStatus" jdbcType="VARCHAR"/>
+        <result column="show_status_name" property="showStatusName" jdbcType="VARCHAR"/>
+        <result column="pay_type_code" property="payTypeCode" jdbcType="VARCHAR"/>
+        <result column="pay_platform" property="payPlatform" jdbcType="VARCHAR"/>
+        <result column="pay_platform_channel" property="payPlatformChannel" jdbcType="VARCHAR"/>
+        <result column="pay_channel_fee" property="payChannelFee" jdbcType="DECIMAL"/>
+        <result column="device_type" property="deviceType" jdbcType="VARCHAR"/>
+        <result column="pay_time" property="payTime" jdbcType="TIMESTAMP"/>
+        <result column="order_time" property="orderTime" jdbcType="TIMESTAMP"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="last_modity_time" property="lastModityTime" jdbcType="TIMESTAMP"/>
+        <result column="user_remark" property="userRemark" jdbcType="VARCHAR"/>
+        <result column="original_total_price" property="originalTotalPrice" jdbcType="DECIMAL"/>
+        <result column="total_price" property="totalPrice" jdbcType="DECIMAL"/>
+        <result column="need_pay_price" property="needPayPrice" jdbcType="DECIMAL"/>
+        <result column="paid_price" property="paidPrice" jdbcType="DECIMAL"/>
+        <result column="active_price" property="activePrice" jdbcType="DECIMAL"/>
+        <result column="coupon_price" property="couponPrice" jdbcType="DECIMAL"/>
+        <result column="integral_price" property="integralPrice" jdbcType="DECIMAL"/>
+        <result column="integral_count" property="integralCount" jdbcType="INTEGER"/>
+        <result column="card_price" property="cardPrice" jdbcType="DECIMAL"/>
+        <result column="other_price" property="otherPrice" jdbcType="DECIMAL"/>
+        <result column="total_cost" property="totalCost" jdbcType="DECIMAL"/>
+        <result column="invoice_mail_money" property="invoiceMailMoney" jdbcType="DECIMAL"/>
+        <result column="exception_status" property="exceptionStatus" jdbcType="INTEGER"/>
+        <result column="refund_status" property="refundStatus" jdbcType="INTEGER"/>
+        <result column="refund_reason" property="refundReason" jdbcType="VARCHAR"/>
+        <result column="supplier_status" property="supplierStatus" jdbcType="INTEGER"/>
+        <result column="sign" property="sign" jdbcType="VARCHAR"/>
+        <result column="product_name" property="productName" jdbcType="VARCHAR"/>
+        <result column="product_id" property="productId" jdbcType="BIGINT"/>
+        <result column="air_line_type" property="airLineType" jdbcType="SMALLINT"/>
+        <result column="trip_type" property="tripType" jdbcType="SMALLINT"/>
+        <result column="arr_city" property="arrCity" jdbcType="VARCHAR"/>
+        <result column="arr_city_name" property="arrCityName" jdbcType="VARCHAR"/>
+        <result column="depart_city" property="departCity" jdbcType="VARCHAR"/>
+        <result column="depart_city_name" property="departCityName" jdbcType="VARCHAR"/>
+        <result column="depart_addr" property="departAddr" jdbcType="VARCHAR"/>
+        <result column="arr_addr" property="arrAddr" jdbcType="VARCHAR"/>
+        <result column="depart_date" property="departDate" jdbcType="VARCHAR"/>
+        <result column="arr_time" property="arrTime" jdbcType="VARCHAR"/>
+        <result column="code" property="code" jdbcType="VARCHAR"/>
+        <result column="terminal" property="terminal" jdbcType="VARCHAR"/>
+        <result column="order_second_type" property="orderSecondType" jdbcType="VARCHAR"/>
+        <result column="device_id" property="deviceId" jdbcType="VARCHAR"/>
+        <result column="comment_status" property="commentStatus" jdbcType="INTEGER"/>
+        <result column="integral_status" property="integralStatus" jdbcType="SMALLINT"/>
+        <result column="integral_return_count" property="integralReturnCount" jdbcType="INTEGER"/>
+        <result column="card_no" property="cardNo" jdbcType="VARCHAR"/>
+        <result column="delivery_time" property="deliveryTime" jdbcType="TIMESTAMP"/>
+        <result column="receive_time" property="receiveTime" jdbcType="TIMESTAMP"/>
+        <result column="ip" property="ip" jdbcType="VARCHAR"/>
+        <result column="fee" property="fee" jdbcType="DECIMAL"/>
+        <result column="right_order_no" property="rightOrderNo" jdbcType="VARCHAR"/>
+        <result column="customer_session_id" property="customerSessionId" jdbcType="VARCHAR"/>
+        <result column="ref_document_id" property="refDocumentId" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Where">
+        <if test="orderId != null">and order_id= #{orderId}</if>
+        <if test="orderNo != null and orderNo !=''">and order_no= #{orderNo}</if>
+        <if test="orderCategory != null">and order_category= #{orderCategory}</if>
+        <if test="originalOrderNo != null and originalOrderNo !=''">and original_order_no= #{originalOrderNo}</if>
+        <if test="thirdOrderNo != null and thirdOrderNo !=''">and third_order_no= #{thirdOrderNo}</if>
+        <if test="thirdTradeNo != null and thirdTradeNo !=''">and third_trade_no= #{thirdTradeNo}</if>
+        <if test="orderType != null and orderType !=''">and order_type= #{orderType}</if>
+        <if test="orderSource != null and orderSource !=''">and order_source= #{orderSource}</if>
+        <if test="orderPlatform != null and orderPlatform !=''">and order_platform= #{orderPlatform}</if>
+        <if test="channelCode != null and channelCode !=''">and channel_code= #{channelCode}</if>
+        <if test="delFlag != null">and del_flag= #{delFlag}</if>
+        <if test="userId != null">and user_id= #{userId}</if>
+        <if test="userName != null and userName !=''">and user_name= #{userName}</if>
+        <if test="orderStatus != null">and order_status= #{orderStatus}</if>
+        <if test="thridOrderStatus != null and thridOrderStatus !=''">and thrid_order_status= #{thridOrderStatus}</if>
+        <if test="showStatusName != null and showStatusName !=''">and show_status_name= #{showStatusName}</if>
+        <if test="payTypeCode != null and payTypeCode !=''">and pay_type_code= #{payTypeCode}</if>
+        <if test="payPlatform != null and payPlatform !=''">and pay_platform= #{payPlatform}</if>
+        <if test="payPlatformChannel != null and payPlatformChannel !=''">and pay_platform_channel=
+            #{payPlatformChannel}
+        </if>
+        <if test="payChannelFee != null">and pay_channel_fee= #{payChannelFee}</if>
+        <if test="deviceType != null and deviceType !=''">and device_type= #{deviceType}</if>
+        <if test="payTime != null">and pay_time= #{payTime}</if>
+        <if test="orderTime != null">and order_time= #{orderTime}</if>
+        <if test="createTime != null">and create_time= #{createTime}</if>
+        <if test="lastModityTime != null">and last_modity_time= #{lastModityTime}</if>
+        <if test="userRemark != null and userRemark !=''">and user_remark= #{userRemark}</if>
+        <if test="originalTotalPrice != null">and original_total_price= #{originalTotalPrice}</if>
+        <if test="totalPrice != null">and total_price= #{totalPrice}</if>
+        <if test="needPayPrice != null">and need_pay_price= #{needPayPrice}</if>
+        <if test="paidPrice != null">and paid_price= #{paidPrice}</if>
+        <if test="activePrice != null">and active_price= #{activePrice}</if>
+        <if test="couponPrice != null">and coupon_price= #{couponPrice}</if>
+        <if test="integralPrice != null">and integral_price= #{integralPrice}</if>
+        <if test="integralCount != null">and integral_count= #{integralCount}</if>
+        <if test="cardPrice != null">and card_price= #{cardPrice}</if>
+        <if test="otherPrice != null">and other_price= #{otherPrice}</if>
+        <if test="totalCost != null">and total_cost= #{totalCost}</if>
+        <if test="invoiceMailMoney != null">and invoice_mail_money= #{invoiceMailMoney}</if>
+        <if test="exceptionStatus != null">and exception_status= #{exceptionStatus}</if>
+        <if test="refundStatus != null">and refund_status= #{refundStatus}</if>
+        <if test="refundReason != null and refundReason !=''">and refund_reason= #{refundReason}</if>
+        <if test="supplierStatus != null">and supplier_status= #{supplierStatus}</if>
+        <if test="sign != null and sign !=''">and sign= #{sign}</if>
+        <if test="productName != null and productName !=''">and product_name= #{productName}</if>
+        <if test="productId != null">and product_id= #{productId}</if>
+        <if test="airLineType != null">and air_line_type= #{airLineType}</if>
+        <if test="tripType != null">and trip_type= #{tripType}</if>
+        <if test="arrCity != null and arrCity !=''">and arr_city= #{arrCity}</if>
+        <if test="arrCityName != null and arrCityName !=''">and arr_city_name= #{arrCityName}</if>
+        <if test="departCity != null and departCity !=''">and depart_city= #{departCity}</if>
+        <if test="departCityName != null and departCityName !=''">and depart_city_name= #{departCityName}</if>
+        <if test="departAddr != null and departAddr !=''">and depart_addr= #{departAddr}</if>
+        <if test="arrAddr != null and arrAddr !=''">and arr_addr= #{arrAddr}</if>
+        <if test="departDate != null and departDate !=''">and depart_date= #{departDate}</if>
+        <if test="arrTime != null and arrTime !=''">and arr_time= #{arrTime}</if>
+        <if test="code != null and code !=''">and code= #{code}</if>
+        <if test="terminal != null and terminal !=''">and terminal= #{terminal}</if>
+        <if test="orderSecondType != null and orderSecondType !=''">and order_second_type= #{orderSecondType}</if>
+        <if test="deviceId != null and deviceId !=''">and device_id= #{deviceId}</if>
+        <if test="commentStatus != null">and comment_status= #{commentStatus}</if>
+        <if test="integralStatus != null">and integral_status= #{integralStatus}</if>
+        <if test="integralReturnCount != null">and integral_return_count= #{integralReturnCount}</if>
+        <if test="cardNo != null and cardNo !=''">and card_no= #{cardNo}</if>
+        <if test="deliveryTime != null">and delivery_time= #{deliveryTime}</if>
+        <if test="receiveTime != null">and receive_time= #{receiveTime}</if>
+        <if test="ip != null and ip !=''">and ip= #{ip}</if>
+        <if test="fee != null">and fee= #{fee}</if>
+        <if test="rightOrderNo != null and rightOrderNo !=''">and right_order_no= #{rightOrderNo}</if>
+        <if test="customerSessionId != null and customerSessionId !=''">and customer_session_id= #{customerSessionId}
+        </if>
+        <if test="refDocumentId != null and refDocumentId !=''">and ref_document_id= #{refDocumentId}</if>
+    </sql>
+    <sql id="Base_Column_List">
+		order_id ,
+		order_no ,
+		order_category ,
+		original_order_no ,
+		third_order_no ,
+		third_trade_no ,
+		order_type ,
+		order_source ,
+		order_platform ,
+		channel_code ,
+		del_flag ,
+		user_id ,
+		user_name ,
+		order_status ,
+		thrid_order_status ,
+		show_status_name ,
+		pay_type_code ,
+		pay_platform ,
+		pay_platform_channel ,
+		pay_channel_fee ,
+		device_type ,
+		pay_time ,
+		order_time ,
+		create_time ,
+		last_modity_time ,
+		user_remark ,
+		original_total_price ,
+		total_price ,
+		need_pay_price ,
+		paid_price ,
+		active_price ,
+		coupon_price ,
+		integral_price ,
+		integral_count ,
+		card_price ,
+		other_price ,
+		total_cost ,
+		invoice_mail_money ,
+		exception_status ,
+		refund_status ,
+		refund_reason ,
+		supplier_status ,
+		sign ,
+		product_name ,
+		product_id ,
+		air_line_type ,
+		trip_type ,
+		arr_city ,
+		arr_city_name ,
+		depart_city ,
+		depart_city_name ,
+		depart_addr ,
+		arr_addr ,
+		depart_date ,
+		arr_time ,
+		code ,
+		terminal ,
+		order_second_type ,
+		device_id ,
+		comment_status ,
+		integral_status ,
+		integral_return_count ,
+		card_no ,
+		delivery_time ,
+		receive_time ,
+		ip ,
+		fee ,
+		right_order_no ,
+		customer_session_id ,
+		ref_document_id 
+	</sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from order_main
+        where
+        order_id = #{orderId,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from order_main
+		where
+		order_id = #{orderId,jdbcType=BIGINT}
+	</delete>
+
+    <insert id="insertSelective" parameterType="cn.aegisa.project.trading.model.OrderMain">
+        insert into order_main
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">order_id,</if>
+            <if test="orderNo != null and orderNo !=''">order_no,</if>
+            <if test="orderCategory != null">order_category,</if>
+            <if test="originalOrderNo != null and originalOrderNo !=''">original_order_no,</if>
+            <if test="thirdOrderNo != null and thirdOrderNo !=''">third_order_no,</if>
+            <if test="thirdTradeNo != null and thirdTradeNo !=''">third_trade_no,</if>
+            <if test="orderType != null and orderType !=''">order_type,</if>
+            <if test="orderSource != null and orderSource !=''">order_source,</if>
+            <if test="orderPlatform != null and orderPlatform !=''">order_platform,</if>
+            <if test="channelCode != null and channelCode !=''">channel_code,</if>
+            <if test="delFlag != null">del_flag,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="userName != null and userName !=''">user_name,</if>
+            <if test="orderStatus != null">order_status,</if>
+            <if test="thridOrderStatus != null and thridOrderStatus !=''">thrid_order_status,</if>
+            <if test="showStatusName != null and showStatusName !=''">show_status_name,</if>
+            <if test="payTypeCode != null and payTypeCode !=''">pay_type_code,</if>
+            <if test="payPlatform != null and payPlatform !=''">pay_platform,</if>
+            <if test="payPlatformChannel != null and payPlatformChannel !=''">pay_platform_channel,</if>
+            <if test="payChannelFee != null">pay_channel_fee,</if>
+            <if test="deviceType != null and deviceType !=''">device_type,</if>
+            <if test="payTime != null">pay_time,</if>
+            <if test="orderTime != null">order_time,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="lastModityTime != null">last_modity_time,</if>
+            <if test="userRemark != null and userRemark !=''">user_remark,</if>
+            <if test="originalTotalPrice != null">original_total_price,</if>
+            <if test="totalPrice != null">total_price,</if>
+            <if test="needPayPrice != null">need_pay_price,</if>
+            <if test="paidPrice != null">paid_price,</if>
+            <if test="activePrice != null">active_price,</if>
+            <if test="couponPrice != null">coupon_price,</if>
+            <if test="integralPrice != null">integral_price,</if>
+            <if test="integralCount != null">integral_count,</if>
+            <if test="cardPrice != null">card_price,</if>
+            <if test="otherPrice != null">other_price,</if>
+            <if test="totalCost != null">total_cost,</if>
+            <if test="invoiceMailMoney != null">invoice_mail_money,</if>
+            <if test="exceptionStatus != null">exception_status,</if>
+            <if test="refundStatus != null">refund_status,</if>
+            <if test="refundReason != null and refundReason !=''">refund_reason,</if>
+            <if test="supplierStatus != null">supplier_status,</if>
+            <if test="sign != null and sign !=''">sign,</if>
+            <if test="productName != null and productName !=''">product_name,</if>
+            <if test="productId != null">product_id,</if>
+            <if test="airLineType != null">air_line_type,</if>
+            <if test="tripType != null">trip_type,</if>
+            <if test="arrCity != null and arrCity !=''">arr_city,</if>
+            <if test="arrCityName != null and arrCityName !=''">arr_city_name,</if>
+            <if test="departCity != null and departCity !=''">depart_city,</if>
+            <if test="departCityName != null and departCityName !=''">depart_city_name,</if>
+            <if test="departAddr != null and departAddr !=''">depart_addr,</if>
+            <if test="arrAddr != null and arrAddr !=''">arr_addr,</if>
+            <if test="departDate != null and departDate !=''">depart_date,</if>
+            <if test="arrTime != null and arrTime !=''">arr_time,</if>
+            <if test="code != null and code !=''">code,</if>
+            <if test="terminal != null and terminal !=''">terminal,</if>
+            <if test="orderSecondType != null and orderSecondType !=''">order_second_type,</if>
+            <if test="deviceId != null and deviceId !=''">device_id,</if>
+            <if test="commentStatus != null">comment_status,</if>
+            <if test="integralStatus != null">integral_status,</if>
+            <if test="integralReturnCount != null">integral_return_count,</if>
+            <if test="cardNo != null and cardNo !=''">card_no,</if>
+            <if test="deliveryTime != null">delivery_time,</if>
+            <if test="receiveTime != null">receive_time,</if>
+            <if test="ip != null and ip !=''">ip,</if>
+            <if test="fee != null">fee,</if>
+            <if test="rightOrderNo != null and rightOrderNo !=''">right_order_no,</if>
+            <if test="customerSessionId != null and customerSessionId !=''">customer_session_id,</if>
+            <if test="refDocumentId != null and refDocumentId !=''">ref_document_id,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">
+                #{orderId,jdbcType=BIGINT},
+            </if>
+            <if test="orderNo != null and orderNo !=''">
+                #{orderNo,jdbcType=VARCHAR},
+            </if>
+            <if test="orderCategory != null">
+                #{orderCategory,jdbcType=SMALLINT},
+            </if>
+            <if test="originalOrderNo != null and originalOrderNo !=''">
+                #{originalOrderNo,jdbcType=VARCHAR},
+            </if>
+            <if test="thirdOrderNo != null and thirdOrderNo !=''">
+                #{thirdOrderNo,jdbcType=VARCHAR},
+            </if>
+            <if test="thirdTradeNo != null and thirdTradeNo !=''">
+                #{thirdTradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="orderType != null and orderType !=''">
+                #{orderType,jdbcType=VARCHAR},
+            </if>
+            <if test="orderSource != null and orderSource !=''">
+                #{orderSource,jdbcType=VARCHAR},
+            </if>
+            <if test="orderPlatform != null and orderPlatform !=''">
+                #{orderPlatform,jdbcType=VARCHAR},
+            </if>
+            <if test="channelCode != null and channelCode !=''">
+                #{channelCode,jdbcType=VARCHAR},
+            </if>
+            <if test="delFlag != null">
+                #{delFlag,jdbcType=SMALLINT},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="userName != null and userName !=''">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="orderStatus != null">
+                #{orderStatus,jdbcType=INTEGER},
+            </if>
+            <if test="thridOrderStatus != null and thridOrderStatus !=''">
+                #{thridOrderStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="showStatusName != null and showStatusName !=''">
+                #{showStatusName,jdbcType=VARCHAR},
+            </if>
+            <if test="payTypeCode != null and payTypeCode !=''">
+                #{payTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="payPlatform != null and payPlatform !=''">
+                #{payPlatform,jdbcType=VARCHAR},
+            </if>
+            <if test="payPlatformChannel != null and payPlatformChannel !=''">
+                #{payPlatformChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="payChannelFee != null">
+                #{payChannelFee,jdbcType=DECIMAL},
+            </if>
+            <if test="deviceType != null and deviceType !=''">
+                #{deviceType,jdbcType=VARCHAR},
+            </if>
+            <if test="payTime != null">
+                #{payTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="orderTime != null">
+                #{orderTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastModityTime != null">
+                #{lastModityTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="userRemark != null and userRemark !=''">
+                #{userRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="originalTotalPrice != null">
+                #{originalTotalPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="totalPrice != null">
+                #{totalPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="needPayPrice != null">
+                #{needPayPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="paidPrice != null">
+                #{paidPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="activePrice != null">
+                #{activePrice,jdbcType=DECIMAL},
+            </if>
+            <if test="couponPrice != null">
+                #{couponPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="integralPrice != null">
+                #{integralPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="integralCount != null">
+                #{integralCount,jdbcType=INTEGER},
+            </if>
+            <if test="cardPrice != null">
+                #{cardPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="otherPrice != null">
+                #{otherPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="totalCost != null">
+                #{totalCost,jdbcType=DECIMAL},
+            </if>
+            <if test="invoiceMailMoney != null">
+                #{invoiceMailMoney,jdbcType=DECIMAL},
+            </if>
+            <if test="exceptionStatus != null">
+                #{exceptionStatus,jdbcType=INTEGER},
+            </if>
+            <if test="refundStatus != null">
+                #{refundStatus,jdbcType=INTEGER},
+            </if>
+            <if test="refundReason != null and refundReason !=''">
+                #{refundReason,jdbcType=VARCHAR},
+            </if>
+            <if test="supplierStatus != null">
+                #{supplierStatus,jdbcType=INTEGER},
+            </if>
+            <if test="sign != null and sign !=''">
+                #{sign,jdbcType=VARCHAR},
+            </if>
+            <if test="productName != null and productName !=''">
+                #{productName,jdbcType=VARCHAR},
+            </if>
+            <if test="productId != null">
+                #{productId,jdbcType=BIGINT},
+            </if>
+            <if test="airLineType != null">
+                #{airLineType,jdbcType=SMALLINT},
+            </if>
+            <if test="tripType != null">
+                #{tripType,jdbcType=SMALLINT},
+            </if>
+            <if test="arrCity != null and arrCity !=''">
+                #{arrCity,jdbcType=VARCHAR},
+            </if>
+            <if test="arrCityName != null and arrCityName !=''">
+                #{arrCityName,jdbcType=VARCHAR},
+            </if>
+            <if test="departCity != null and departCity !=''">
+                #{departCity,jdbcType=VARCHAR},
+            </if>
+            <if test="departCityName != null and departCityName !=''">
+                #{departCityName,jdbcType=VARCHAR},
+            </if>
+            <if test="departAddr != null and departAddr !=''">
+                #{departAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="arrAddr != null and arrAddr !=''">
+                #{arrAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="departDate != null and departDate !=''">
+                #{departDate,jdbcType=VARCHAR},
+            </if>
+            <if test="arrTime != null and arrTime !=''">
+                #{arrTime,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null and code !=''">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="terminal != null and terminal !=''">
+                #{terminal,jdbcType=VARCHAR},
+            </if>
+            <if test="orderSecondType != null and orderSecondType !=''">
+                #{orderSecondType,jdbcType=VARCHAR},
+            </if>
+            <if test="deviceId != null and deviceId !=''">
+                #{deviceId,jdbcType=VARCHAR},
+            </if>
+            <if test="commentStatus != null">
+                #{commentStatus,jdbcType=INTEGER},
+            </if>
+            <if test="integralStatus != null">
+                #{integralStatus,jdbcType=SMALLINT},
+            </if>
+            <if test="integralReturnCount != null">
+                #{integralReturnCount,jdbcType=INTEGER},
+            </if>
+            <if test="cardNo != null and cardNo !=''">
+                #{cardNo,jdbcType=VARCHAR},
+            </if>
+            <if test="deliveryTime != null">
+                #{deliveryTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="receiveTime != null">
+                #{receiveTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ip != null and ip !=''">
+                #{ip,jdbcType=VARCHAR},
+            </if>
+            <if test="fee != null">
+                #{fee,jdbcType=DECIMAL},
+            </if>
+            <if test="rightOrderNo != null and rightOrderNo !=''">
+                #{rightOrderNo,jdbcType=VARCHAR},
+            </if>
+            <if test="customerSessionId != null and customerSessionId !=''">
+                #{customerSessionId,jdbcType=VARCHAR},
+            </if>
+            <if test="refDocumentId != null and refDocumentId !=''">
+                #{refDocumentId,jdbcType=VARCHAR},
+            </if>
+
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="cn.aegisa.project.trading.model.OrderMain">
+        update order_main
+        <set>
+            <if test="orderNo != null and orderNo !=''">
+                order_no= #{orderNo,jdbcType=VARCHAR},
+            </if>
+            <if test="orderCategory != null">
+                order_category= #{orderCategory,jdbcType=SMALLINT},
+            </if>
+            <if test="originalOrderNo != null and originalOrderNo !=''">
+                original_order_no= #{originalOrderNo,jdbcType=VARCHAR},
+            </if>
+            <if test="thirdOrderNo != null and thirdOrderNo !=''">
+                third_order_no= #{thirdOrderNo,jdbcType=VARCHAR},
+            </if>
+            <if test="thirdTradeNo != null and thirdTradeNo !=''">
+                third_trade_no= #{thirdTradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="orderType != null and orderType !=''">
+                order_type= #{orderType,jdbcType=VARCHAR},
+            </if>
+            <if test="orderSource != null and orderSource !=''">
+                order_source= #{orderSource,jdbcType=VARCHAR},
+            </if>
+            <if test="orderPlatform != null and orderPlatform !=''">
+                order_platform= #{orderPlatform,jdbcType=VARCHAR},
+            </if>
+            <if test="channelCode != null and channelCode !=''">
+                channel_code= #{channelCode,jdbcType=VARCHAR},
+            </if>
+            <if test="delFlag != null">
+                del_flag= #{delFlag,jdbcType=SMALLINT},
+            </if>
+            <if test="userId != null">
+                user_id= #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="userName != null and userName !=''">
+                user_name= #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="orderStatus != null">
+                order_status= #{orderStatus,jdbcType=INTEGER},
+            </if>
+            <if test="thridOrderStatus != null and thridOrderStatus !=''">
+                thrid_order_status= #{thridOrderStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="showStatusName != null and showStatusName !=''">
+                show_status_name= #{showStatusName,jdbcType=VARCHAR},
+            </if>
+            <if test="payTypeCode != null and payTypeCode !=''">
+                pay_type_code= #{payTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="payPlatform != null and payPlatform !=''">
+                pay_platform= #{payPlatform,jdbcType=VARCHAR},
+            </if>
+            <if test="payPlatformChannel != null and payPlatformChannel !=''">
+                pay_platform_channel= #{payPlatformChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="payChannelFee != null">
+                pay_channel_fee= #{payChannelFee,jdbcType=DECIMAL},
+            </if>
+            <if test="deviceType != null and deviceType !=''">
+                device_type= #{deviceType,jdbcType=VARCHAR},
+            </if>
+            <if test="payTime != null">
+                pay_time= #{payTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="orderTime != null">
+                order_time= #{orderTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createTime != null">
+                create_time= #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastModityTime != null">
+                last_modity_time= #{lastModityTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="userRemark != null and userRemark !=''">
+                user_remark= #{userRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="originalTotalPrice != null">
+                original_total_price= #{originalTotalPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="totalPrice != null">
+                total_price= #{totalPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="needPayPrice != null">
+                need_pay_price= #{needPayPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="paidPrice != null">
+                paid_price= #{paidPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="activePrice != null">
+                active_price= #{activePrice,jdbcType=DECIMAL},
+            </if>
+            <if test="couponPrice != null">
+                coupon_price= #{couponPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="integralPrice != null">
+                integral_price= #{integralPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="integralCount != null">
+                integral_count= #{integralCount,jdbcType=INTEGER},
+            </if>
+            <if test="cardPrice != null">
+                card_price= #{cardPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="otherPrice != null">
+                other_price= #{otherPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="totalCost != null">
+                total_cost= #{totalCost,jdbcType=DECIMAL},
+            </if>
+            <if test="invoiceMailMoney != null">
+                invoice_mail_money= #{invoiceMailMoney,jdbcType=DECIMAL},
+            </if>
+            <if test="exceptionStatus != null">
+                exception_status= #{exceptionStatus,jdbcType=INTEGER},
+            </if>
+            <if test="refundStatus != null">
+                refund_status= #{refundStatus,jdbcType=INTEGER},
+            </if>
+            <if test="refundReason != null and refundReason !=''">
+                refund_reason= #{refundReason,jdbcType=VARCHAR},
+            </if>
+            <if test="supplierStatus != null">
+                supplier_status= #{supplierStatus,jdbcType=INTEGER},
+            </if>
+            <if test="sign != null and sign !=''">
+                sign= #{sign,jdbcType=VARCHAR},
+            </if>
+            <if test="productName != null and productName !=''">
+                product_name= #{productName,jdbcType=VARCHAR},
+            </if>
+            <if test="productId != null">
+                product_id= #{productId,jdbcType=BIGINT},
+            </if>
+            <if test="airLineType != null">
+                air_line_type= #{airLineType,jdbcType=SMALLINT},
+            </if>
+            <if test="tripType != null">
+                trip_type= #{tripType,jdbcType=SMALLINT},
+            </if>
+            <if test="arrCity != null and arrCity !=''">
+                arr_city= #{arrCity,jdbcType=VARCHAR},
+            </if>
+            <if test="arrCityName != null and arrCityName !=''">
+                arr_city_name= #{arrCityName,jdbcType=VARCHAR},
+            </if>
+            <if test="departCity != null and departCity !=''">
+                depart_city= #{departCity,jdbcType=VARCHAR},
+            </if>
+            <if test="departCityName != null and departCityName !=''">
+                depart_city_name= #{departCityName,jdbcType=VARCHAR},
+            </if>
+            <if test="departAddr != null and departAddr !=''">
+                depart_addr= #{departAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="arrAddr != null and arrAddr !=''">
+                arr_addr= #{arrAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="departDate != null and departDate !=''">
+                depart_date= #{departDate,jdbcType=VARCHAR},
+            </if>
+            <if test="arrTime != null and arrTime !=''">
+                arr_time= #{arrTime,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null and code !=''">
+                code= #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="terminal != null and terminal !=''">
+                terminal= #{terminal,jdbcType=VARCHAR},
+            </if>
+            <if test="orderSecondType != null and orderSecondType !=''">
+                order_second_type= #{orderSecondType,jdbcType=VARCHAR},
+            </if>
+            <if test="deviceId != null and deviceId !=''">
+                device_id= #{deviceId,jdbcType=VARCHAR},
+            </if>
+            <if test="commentStatus != null">
+                comment_status= #{commentStatus,jdbcType=INTEGER},
+            </if>
+            <if test="integralStatus != null">
+                integral_status= #{integralStatus,jdbcType=SMALLINT},
+            </if>
+            <if test="integralReturnCount != null">
+                integral_return_count= #{integralReturnCount,jdbcType=INTEGER},
+            </if>
+            <if test="cardNo != null and cardNo !=''">
+                card_no= #{cardNo,jdbcType=VARCHAR},
+            </if>
+            <if test="deliveryTime != null">
+                delivery_time= #{deliveryTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="receiveTime != null">
+                receive_time= #{receiveTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ip != null and ip !=''">
+                ip= #{ip,jdbcType=VARCHAR},
+            </if>
+            <if test="fee != null">
+                fee= #{fee,jdbcType=DECIMAL},
+            </if>
+            <if test="rightOrderNo != null and rightOrderNo !=''">
+                right_order_no= #{rightOrderNo,jdbcType=VARCHAR},
+            </if>
+            <if test="customerSessionId != null and customerSessionId !=''">
+                customer_session_id= #{customerSessionId,jdbcType=VARCHAR},
+            </if>
+            <if test="refDocumentId != null and refDocumentId !=''">
+                ref_document_id= #{refDocumentId,jdbcType=VARCHAR}
+            </if>
+        </set>
+        where
+        order_id = #{orderId,jdbcType=BIGINT}
+    </update>
+
+    <select id="getAll" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List"/>
+        from order_main where 1=1
+        <include refid="Base_Where"/>
+    </select>
+    <select id="pageCount" resultType="java.lang.Integer" parameterType="map">
+        select count(1) from order_main where 1=1
+        <include refid="Base_Where"/>
+    </select>
+    <select id="pageData" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List"/>
+        from order_main where 1=1
+        <include refid="Base_Where"/>
+    </select>
+
+    <select id="selectByIds" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from order_main where order_id in
+        <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="selectFlightSuccess" resultType="cn.aegisa.project.trading.vo.FlightSuccessDO" parameterType="map">
+        SELECT
+        main.order_no           as orderNo,
+        main.create_time        as createTime,
+        flight.pay_time         as payTime,
+        main.depart_city_name   as departCityName,
+        main.arr_city_name      as arrCityName,
+        main. CODE              as code,
+        detail.carrier_name     as carrierName,
+        detail.adult_num + detail.child_num as peopleCount,
+        main.total_price as totalPrice,
+        main.depart_date as departDate
+        FROM
+        order_customer_info cus
+        LEFT JOIN order_flight_detail detail ON cus.order_sub_no = detail.order_sub_no
+        LEFT JOIN order_flight flight ON detail.order_no = flight.order_no
+        LEFT JOIN order_main main ON detail.order_no = main.order_no
+        LEFT JOIN order_main_expand expand ON detail.order_no = expand.order_no
+        LEFT JOIN order_pay_info info ON (
+        detail.order_no = info.order_no
+        )
+        WHERE
+        flight.pay_time IS NOT NULL
+        AND info.pay_type IN (1, 2)
+        AND main.create_time &gt;= #{startTime}
+        AND main.create_time &lt; #{endTime}
+        GROUP BY
+        main.order_no
+    </select>
+
+</mapper>
