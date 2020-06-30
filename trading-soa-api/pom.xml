@@ -21,7 +21,7 @@
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
 			<artifactId>xstream</artifactId>
-			<version>1.4.7</version>
+			<version>1.4.10-java7</version>
 		</dependency>
 	</dependencies>
 	<!-- clean deploy命令就上次到私服里面  -->
